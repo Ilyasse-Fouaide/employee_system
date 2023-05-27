@@ -50,6 +50,7 @@ const SalaryChart = ({ data }) => {
 		<div style={{ marginTop: "60px" }}>
 			<div
 				style={{
+					width: "1000px",
 					display: "flex",
 					flexDirection: "row",
 					justifyContent: "space-between",

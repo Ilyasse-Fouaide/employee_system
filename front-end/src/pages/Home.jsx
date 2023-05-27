@@ -206,9 +206,19 @@ function Home() {
 									))}
 							</tbody>
 						</table>
+						<div
+							style={{
+								width: "100%",
+								display: "flex",
+								flexDirection: "row",
+								justifyContent: "center",
+								alignItems: "center",
+							}}
+						>
+							<SalaryChart data={data} />
+						</div>
 					</>
 				)}
-				<SalaryChart data={data} />
 				<Modal
 					show={showModal}
 					onHide={handleCloseModal}

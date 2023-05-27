@@ -12,6 +12,8 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import SalaryChart from "./SalaryChart";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
 
 function Home() {
 	const location = useLocation();
@@ -86,21 +88,23 @@ function Home() {
 			/>
 			<div className="mt-5" style={{ width: "100%", padding: "20px" }}>
 				{error && (
-					<>
-						<div class="alert alert-info" role="alert">
-							No Employee Found{" "}
-							{user.admin && (
-								<>
-									{/* // ! --------------Only Admin-------------- */}
-									<Link to={"/add-employee"} className="alert-link">
-										Add new Employee
+					<Alert severity="info">
+						<AlertTitle>Info</AlertTitle>
+						Employees not found —{" "}
+						{user.admin && (
+							<>
+								{/* // ! --------------Only Admin-------------- */}
+								<strong>
+									<Link to={"/add-employee"} style={{ textDecoration: "none" }}>
+										Click Here
 									</Link>
-								</>
-							)}
-						</div>
-					</>
+								</strong>
+							</>
+						)}{" "}
+						to add employee!
+					</Alert>
 				)}
-				{data && (
+				{data.length !== 0 && (
 					<>
 						<div
 							className="d-flex justify-content-between"

@@ -21,6 +21,7 @@ import userContext from "../context";
 import Loading from "../Loading";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
+import AlertTitle from "@mui/material/AlertTitle";
 
 export default function Service() {
 	const { user, loading } = useContext(userContext);
@@ -85,15 +86,17 @@ export default function Service() {
 			/>
 			<div className="mt-5" style={{ width: "100%", padding: "20px" }}>
 				{error && (
-					<>
-						<div class="alert alert-info" role="alert">
-							If you want to manage services for all employees,{" "}
-							{/* // ! --------------Only Admin-------------- */}
-							<Link to={"/manage-service-fonction"} className="alert-link">
-								click here
+					<Alert severity="info">
+						<AlertTitle>Info</AlertTitle>
+						No employees found. Perhaps you could add an employee, or maybe all
+						employees are currently in service —{" "}
+						<strong>
+							<Link to={"/add-employee"} style={{ textDecoration: "none" }}>
+								Click Here
 							</Link>
-						</div>
-					</>
+						</strong>{" "}
+						to add employee!
+					</Alert>
 				)}
 				{data && (
 					<>

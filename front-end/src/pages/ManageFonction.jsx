@@ -136,7 +136,7 @@ export default function ManageFonction() {
 					{error && (
 						<Alert severity="info">
 							<AlertTitle>Info</AlertTitle>
-							Employees with fonction not found —{" "}
+							No employees with active fonction were found —{" "}
 							<strong>
 								<Link to={"/fonction"} style={{ textDecoration: "none" }}>
 									Click Here

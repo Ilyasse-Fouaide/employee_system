@@ -113,18 +113,17 @@ function Home() {
 				{error && (
 					<Alert severity="info">
 						<AlertTitle>Info</AlertTitle>
-						Employees not found —{" "}
+						The search did not yield any employees{" "}
 						{user.admin && (
 							<>
 								{/* // ! --------------Only Admin-------------- */}
 								<strong>
 									<Link to={"/add-employee"} style={{ textDecoration: "none" }}>
-										Click Here
+										- Click Here to add employee!
 									</Link>
 								</strong>
 							</>
-						)}{" "}
-						to add employee!
+						)}
 					</Alert>
 				)}
 				{data.length !== 0 && (
@@ -246,36 +245,38 @@ function Home() {
 						</div>
 					</>
 				)}
-				<Box
-					sx={{
-						height: "100vh",
-						transform: "translateZ(0px)",
-						flexGrow: 1,
-						position: "fixed",
-						bottom: "0",
-						right: "0",
-					}}
-				>
-					<Backdrop open={open} />
-					<SpeedDial
-						ariaLabel="SpeedDial tooltip example"
-						sx={{ position: "absolute", bottom: 16, right: 16 }}
-						icon={<SpeedDialIcon />}
-						onClose={handleClose}
-						onOpen={handleOpen}
-						open={open}
+				{user.admin && (
+					<Box
+						sx={{
+							height: "100vh",
+							transform: "translateZ(0px)",
+							flexGrow: 1,
+							position: "fixed",
+							bottom: "0",
+							right: "0",
+						}}
 					>
-						{actions.map((action) => (
-							<SpeedDialAction
-								key={action.name}
-								icon={action.icon}
-								tooltipTitle={action.name}
-								tooltipOpen
-								onClick={handleClose}
-							/>
-						))}
-					</SpeedDial>
-				</Box>
+						<Backdrop open={open} />
+						<SpeedDial
+							ariaLabel="SpeedDial tooltip example"
+							sx={{ position: "absolute", bottom: 16, right: 16 }}
+							icon={<SpeedDialIcon />}
+							onClose={handleClose}
+							onOpen={handleOpen}
+							open={open}
+						>
+							{actions.map((action) => (
+								<SpeedDialAction
+									key={action.name}
+									icon={action.icon}
+									tooltipTitle={action.name}
+									tooltipOpen
+									onClick={handleClose}
+								/>
+							))}
+						</SpeedDial>
+					</Box>
+				)}
 				<Modal
 					show={showModal}
 					onHide={handleCloseModal}

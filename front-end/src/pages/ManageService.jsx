@@ -136,7 +136,7 @@ export default function ManageService() {
 					{error && (
 						<Alert severity="info">
 							<AlertTitle>Info</AlertTitle>
-							Employees with service not found —{" "}
+							No employees with active service were found —{" "}
 							<strong>
 								<Link to={"/service"} style={{ textDecoration: "none" }}>
 									Click Here

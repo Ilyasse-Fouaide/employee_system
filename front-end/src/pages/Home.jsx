@@ -14,6 +14,24 @@ import EditIcon from "@mui/icons-material/Edit";
 import SalaryChart from "./SalaryChart";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
+// import SpeedDialTooltipOpen from "./Button";4
+import Backdrop from "@mui/material/Backdrop";
+import SpeedDial from "@mui/material/SpeedDial";
+import SpeedDialIcon from "@mui/material/SpeedDialIcon";
+import SpeedDialAction from "@mui/material/SpeedDialAction";
+import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
+import Box from "@mui/material/Box";
+
+const actions = [
+	{
+		icon: (
+			<PersonAddAlt1Icon
+				onClick={() => (window.location.href = "/add-employee")}
+			/>
+		),
+		name: "Add Employee",
+	},
+];
 
 function Home() {
 	const location = useLocation();
@@ -30,6 +48,10 @@ function Home() {
 
 	const [selectedEmployee, setSelectedEmployee] = useState(null);
 	const [showModal, setShowModal] = useState(false);
+
+	const [open, setOpen] = React.useState(false);
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
 
 	useEffect(() => {
 		axios
@@ -72,7 +94,8 @@ function Home() {
 	};
 
 	return (
-		<div className="d-flex">
+		<div>
+			{/* <SpeedDialTooltipOpen /> */}
 			{/* <SideNavBar /> */}
 			<ToastContainer
 				position="top-right"
@@ -223,6 +246,36 @@ function Home() {
 						</div>
 					</>
 				)}
+				<Box
+					sx={{
+						height: "100vh",
+						transform: "translateZ(0px)",
+						flexGrow: 1,
+						position: "fixed",
+						bottom: "0",
+						right: "0",
+					}}
+				>
+					<Backdrop open={open} />
+					<SpeedDial
+						ariaLabel="SpeedDial tooltip example"
+						sx={{ position: "absolute", bottom: 16, right: 16 }}
+						icon={<SpeedDialIcon />}
+						onClose={handleClose}
+						onOpen={handleOpen}
+						open={open}
+					>
+						{actions.map((action) => (
+							<SpeedDialAction
+								key={action.name}
+								icon={action.icon}
+								tooltipTitle={action.name}
+								tooltipOpen
+								onClick={handleClose}
+							/>
+						))}
+					</SpeedDial>
+				</Box>
 				<Modal
 					show={showModal}
 					onHide={handleCloseModal}

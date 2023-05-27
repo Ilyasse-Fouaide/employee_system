@@ -47,7 +47,7 @@ const SalaryChart = ({ data }) => {
 	}
 
 	return (
-		<div style={{ width: "50%", marginTop: "60px" }}>
+		<div style={{ marginTop: "60px" }}>
 			<div
 				style={{
 					display: "flex",
@@ -76,11 +76,27 @@ const SalaryChart = ({ data }) => {
 					</span>
 				</div>
 			</div>
-			{chartType === "bar" && <Bar data={chartData} options={chartOptions} />}
-			{chartType === "doughnut" && (
-				<Doughnut data={chartData} options={chartOptions} />
+			{chartType === "bar" && (
+				<Bar
+					data={chartData}
+					options={chartOptions}
+					style={{ width: "1000px" }}
+				/>
 			)}
-			{chartType === "pie" && <Pie data={chartData} options={chartOptions} />}
+			{chartType === "doughnut" && (
+				<Doughnut
+					data={chartData}
+					options={chartOptions}
+					style={{ width: "900px" }}
+				/>
+			)}
+			{chartType === "pie" && (
+				<Pie
+					data={chartData}
+					options={chartOptions}
+					style={{ width: "900px" }}
+				/>
+			)}
 		</div>
 	);
 };

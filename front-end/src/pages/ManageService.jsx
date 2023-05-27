@@ -145,6 +145,9 @@ export default function ManageService() {
 									</Typography>
 								</TableCell>
 								<TableCell style={{ width: 300 }} align="right">
+									<muted className="text-muted" style={{ fontSize: "13px" }}>
+										Remove From Service
+									</muted>{" "}
 									<IconButton
 										onClick={() => {
 											axios

@@ -145,6 +145,9 @@ export default function ManageFonction() {
 									</Typography>
 								</TableCell>
 								<TableCell style={{ width: 300 }} align="right">
+									<muted className="text-muted" style={{ fontSize: "13px" }}>
+										Remove From Fonction
+									</muted>{" "}
 									<IconButton
 										onClick={() => {
 											axios

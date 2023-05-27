@@ -130,7 +130,7 @@ export default function App() {
     axios
       .post("/logout")
       .then(() => {
-        window.location.reload(true);
+        window.location.href = "/login";
       });
   }
 

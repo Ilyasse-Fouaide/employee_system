@@ -21,8 +21,8 @@ const app = express();
 app.listen(process.env.PORT, () => console.log("http://localhost:" + process.env.PORT));
 
 // * --- Logging With morgan ---
-const accessLogStream = fs.createWriteStream(path.join(__dirname, '/logs/express.log'), { flags: 'a' });
-app.use(morgan('combined', { stream: accessLogStream }));
+// const accessLogStream = fs.createWriteStream(path.join(__dirname, '/logs/express.log'), { flags: 'a' });
+// app.use(morgan('combined', { stream: accessLogStream }));
 
 // app.use(morgan(':method :url :status :res[content-length] - :response-time ms [:date]'));
 // app.use(morgan('combined'));
